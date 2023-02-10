@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends 'home1.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="shop spad">
+        
+        <div class="container">
+            
+                    <div class="row">
+                        {% for i in items %}
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="{{i.image.url}}" style="background-image: url(&quot;{{i.image.url}}&quot;);">
+                                    <ul class="product__hover">
+                                        <!-- <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                        <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
+                                        </li>
+                                        <li><a href="#"><img src="img/icon/search.png" alt=""></a></li> -->
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6>{{i.name}}</h6>
+                                    <a href="{% url 'pro_details1' dataid=i.id %}" class="add-cart">Details</a>
+                                    <div class="rating">
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <h5>₹{{i.price}}</h5>
+                                    <div class="product__color__select">
+                                        <label for="pc-4">
+                                            <input type="radio" id="pc-4">
+                                        </label>
+                                        <label class="black" for="pc-5">
+                                            <input type="radio" id="pc-5">
+                                        </label>
+                                        <label class="grey" for="pc-6">
+                                            <input type="radio" id="pc-6">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                    
+        </div>
+        
+    </section>
+</body>
+</html>
+{% endblock %}

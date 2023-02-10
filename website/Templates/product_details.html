@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% extends 'home.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center><h1>{{dat.name}}</h1><br></center>
+    
+    <section class="section" id="product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                <div class="left-images">
+                    <img src="{{dat.image.url}}" width="250px" height="600px" alt="">
+                    <!-- <img src="assets/images/single-product-02.jpg" alt=""> -->
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="right-content">
+                    <h4>{{dat.name}}</h4>
+                    <span class="price">₹{{dat.price}}</span>
+                    <ul class="stars">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                    </ul>
+                    <!-- <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kon tempor incididunt ut labore.</span> -->
+                    <div class="quote">
+                        <i class="fa fa-quote-left"></i><p>Sizes available:{{dat.size}}</p>
+                    </div>
+                    <input type="hidden" name="price" id="price" value="{{ dat.price }}" >
+                    <div class="quantity-content">
+                        <div class="left-content">
+                            <h6>No. of Orders</h6>
+                        </div>
+                        <div class="right-content">
+
+                            <input type="number" name="qty" id="qty"  value="1" min="1" max="25" required >
+                            <!-- <div class="quantity buttons_added">
+                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="10" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                            </div> -->
+                        </div>
+                        
+                    </div>
+                    <div class="quantity-content">
+                        <div class="left-content">
+                            <h6>Total price</h6>
+                        </div>
+                        <div class="right-content">
+                        
+                            <input type="number" name="totalprice" id="totalprice" required >
+                            <!-- <div class="quantity buttons_added">
+                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="10" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                            </div> -->
+                        </div> 
+                    </div>
+                    {% if request.session.name %}
+                    <div class="total">
+                        <h4></h4>
+                        <div class="main-border-button"><a href="{% url 'pay' %}">Buy</a></div>
+                    </div>
+                    {% else %}
+                    <div class="total">
+                        <h4></h4>
+                        <div class="main-border-button"><a href="{% url 'login_' %}">Add To Cart</a></div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+    
+            $("#qty").change(function(){
+    
+                quantity=document.getElementById("qty").value; //assing a avriable and add value of quantity into it
+    
+                Price=document.getElementById("price").value; //assing a avriable and add value of price into it
+    
+                total= quantity * Price;         //multiply variables of quantity and price and assing value into a variable total
+    
+                document.getElementById("totalprice").value=total;
+            });
+        });
+        
+    </script>
+
+</body>
+</html>
+{% endblock %}
+

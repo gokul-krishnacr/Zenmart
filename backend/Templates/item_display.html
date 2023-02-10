@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div class="col-md-8"> -->
+        <div class="card">
+            <div class="card-header">
+                <h4>Items</h4>
+                <div class="card-header-action">
+                    <!-- <a href="#" class="btn btn-danger">View More <i class="fas fa-chevron-right"></i></a> -->
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive table-invoice">
+                    <table class="table table-striped">
+                    <tbody><tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Size</th>
+                        <th>Image</th>
+                        
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <!-- <td><a href="#">{i.category}</a></td> -->
+                        <td class="font-weight-600">{{i.name}}</td>
+                        <td class="font-weight-600">{{i.price}}</td>
+                        <td><div class="badge badge-warning">{{i.category}}</div></td>
+                        <td class="font-weight-600">{{i.size}}</td>
+                        <td>
+                            <img src="{{i.image.url}}" alt="" width="100px" height="100px">
+                        </td>
+                        <td>
+                            <form action="{% url 'item_e' dataid=i.id %}">
+                        <button class="btn btn-primary" type="submit">Edit</button></form>
+                        </td>
+                        <td>
+                            <form action="{% url 'del_item' dataid=i.id %}">
+                            <button class="btn btn-primary" type="submit">Delete</button></form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <!-- <tr>
+                        <td><a href="#">INV-48574</a></td>
+                        <td class="font-weight-600">Susie Willis</td>
+                        <td><div class="badge badge-success">Paid</div></td>
+                        <td>July 21, 2018</td>
+                        <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">INV-76824</a></td>
+                        <td class="font-weight-600">Muhamad Nuruzzaki</td>
+                        <td><div class="badge badge-warning">Unpaid</div></td>
+                        <td>July 22, 2018</td>
+                        <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">INV-84990</a></td>
+                        <td class="font-weight-600">Agung Ardiansyah</td>
+                        <td><div class="badge badge-warning">Unpaid</div></td>
+                        <td>July 22, 2018</td>
+                        <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">INV-87320</a></td>
+                        <td class="font-weight-600">Ardian Rahardiansyah</td>
+                        <td><div class="badge badge-success">Paid</div></td>
+                        <td>July 28, 2018</td>
+                        <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                    </tr> -->
+                    </tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    /* body {
+  margin: 5% auto 5% auto;
+  width: 100%;
+  max-width: 1125px;
+} */
+</style>
+</html>
+{% endblock %}
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4>Items</h4>
+                <div class="card-header-action">
+                    <a href="#" class="btn btn-danger">View More <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive table-invoice">
+                    <table class="table table-striped">
+                    <tbody><tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Size</th>
+                        <th>Image</th>
+                        
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                        <td><a href="#">{i.category}</a></td>
+                        <td class="font-weight-600">{{i.name}}</td>
+                        <td class="font-weight-600">{{i.price}}</td>
+                        <td class="font-weight-600">{{i.category}}</td>
+                        <td><div class="badge badge-warning">{{i.size}}</div></td>
+                        <td>
+                            <img src="{{i.image.url}}" alt="" width="100px" height="100px">
+                        </td>
+                        <td>
+                            <form action="{% url 'edit_cat' dataid=i.id %}">
+                        <button class="btn btn-primary" type="submit">Edit</button></form>
+                        </td>
+                        <td>
+                            <form action="{% url 'del_cat' dataid=i.id %}">
+                            <button class="btn btn-primary" type="submit">Delete</button></form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+</html>                   
+ -->

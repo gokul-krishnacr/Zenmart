@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Category</h1>
+    <form action="{% url 'c_edit' dataid=data.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="category" placeholder="Category" value="{{data.category}}"><br><br>
+        <input type="text" name="quality" placeholder="Quality" value="{{data.quality}}"><br><br>
+        <input type="file" name="image" placeholder="image" value="{{data.image}}"><br>
+        <button type="submit" class="simple"  onclick="alert('Category edited successfully')">Add</button>
+    </form>
+</body>
+</html>
+<style>body {
+    margin: 5% auto 0 auto;
+    width: 90%;
+    max-width: 1125px;
+  }
+  input{
+    font-family: 'Ubuntu', sans-serif;
+    display: block;
+    margin: 10px;
+    padding: 5px;
+    border: none;
+    font-size: 22px;
+  }
+  button {
+    margin: 15px;
+    font-family: inherit;
+  }
+  .simple::after {
+    content: "";
+    background-color: #dcbaff;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+  }
+  .simple {
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 50px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  </style>
+
+
+{% endblock %}

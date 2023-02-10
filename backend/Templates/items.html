@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Items</h1><br>
+    <form action="{% url 'db_item' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Item"><br>
+        <input type="number" name="price" placeholder="price per item"><br>
+        <select name="category">
+          <option value="">{{data.category}}</option>
+            {% for i in data %}
+            <option>{{i.category}}</option>
+            {% endfor %}
+        </select><br>
+        <select name="size" id="size" multiple>
+            <!-- <option value="Small">Small</option> -->
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+            <option value="XXXL">XXXL</option>
+        </select><br>
+        <input type="file" name="image" placeholder="image"><br>
+        <button type="submit" class="simple" onclick="alert('Item added successfully')">Add</button>
+        <!-- <button class="button button--pan"><span>Upload</span></button> -->
+    </form>
+</body>
+</html>
+<style>
+    body {
+      margin: 5% auto 0 auto;
+      width: 90%;
+      max-width: 1125px;
+    }
+    input{
+      font-family: 'Ubuntu', sans-serif;
+      display: block;
+      margin: 10px;
+      padding: 5px;
+      border: none;
+      font-size: 22px;
+    }
+    select{font-family: 'Ubuntu', sans-serif;
+      display: block;
+      margin: 10px;
+      padding: 5px;
+      border: none;
+      font-size: 22px;}
+    button {
+      margin: 15px;
+      font-family: inherit;
+    }
+    .simple::after {
+      content: "";
+      background-color: #dcbaff;
+      width: 100%;
+      z-index: -1;
+      position: absolute;
+      height: 100%;
+      top: 7px;
+      left: 7px;
+    }
+    .simple {
+      font-size: 20px;
+      font-weight: 200;
+      letter-spacing: 1px;
+      padding: 13px 50px 13px;
+      outline: 0;
+      border: 1px solid black;
+      cursor: pointer;
+      position: relative;
+      background-color: rgba(0, 0, 0, 0);
+    }
+    </style>
+{% endblock %}
